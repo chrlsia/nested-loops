@@ -40,9 +40,19 @@ func main() {
 		playerValue = SCISSORS
 	}
 
-	fmt.Println()
-	fmt.Println("Player chose", playerChoice, "and value is", playerValue)
-	fmt.Println("Computer value is", computerValue)
+	switch computerValue {
+	case ROCK:
+		fmt.Println("Computer chose ROCK")
+		break
+	case PAPER:
+		fmt.Println("computer chose PAPER")
+		break
+	case SCISSORS:
+		fmt.Println("Computer chose SCISSORS")
+	default:
+	}
+
+	fmt.Println("Player value is",playerValue)
 }
 
 // clearScreen clears the screen
