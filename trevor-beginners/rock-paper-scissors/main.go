@@ -19,68 +19,71 @@ const (
 
 func main() {
 	rand.Seed(time.Now().UnixNano())
-	playerChoice := ""
-	playerValue := -1
-
-	computerValue := rand.Intn(2)
-
-	reader := bufio.NewReader(os.Stdin)
-
 	clearScreen()
 
-	fmt.Print("Please enter rock, paper, or scissors -> ")
-	playerChoice, _ = reader.ReadString('\n')
-	playerChoice = strings.Replace(playerChoice, "\n", "", -1)
+	for counter:=1;counter<=3;counter++{
+		playerChoice := ""
+		playerValue := -1
 
-	if playerChoice == "rock" {
-		playerValue = ROCK
-	} else if playerChoice == "paper" {
-		playerValue = PAPER
-	} else if playerChoice == "scissors" {
-		playerValue = SCISSORS
-	}
+		computerValue := rand.Intn(2)
 
-	switch computerValue {
-	case ROCK:
-		fmt.Println("Computer chose ROCK")
-		// break
-	case PAPER:
-		fmt.Println("computer chose PAPER")
-		// break
-	case SCISSORS:
-		fmt.Println("Computer chose SCISSORS")
-	default:
-	}
+		reader := bufio.NewReader(os.Stdin)
 
-	// fmt.Println()
 
-	if computerValue == playerValue {
-		fmt.Println("It is a draw")
-	} else {
-		switch playerValue{
+		fmt.Print("Please enter rock, paper, or scissors -> ")
+		playerChoice, _ = reader.ReadString('\n')
+		playerChoice = strings.Replace(playerChoice, "\n", "", -1)
+
+		if playerChoice == "rock" {
+			playerValue = ROCK
+		} else if playerChoice == "paper" {
+			playerValue = PAPER
+		} else if playerChoice == "scissors" {
+			playerValue = SCISSORS
+		}
+
+		switch computerValue {
 		case ROCK:
-			if playerValue==PAPER{
-				fmt.Println("Computer wins")
-			} else {
-				fmt.Println("Play wins")
-			}
-			break
+			fmt.Println("Computer chose ROCK")
+			// break
 		case PAPER:
-			if playerValue==SCISSORS{
-				fmt.Println("Computer wins")
-			} else {
-				fmt.Println("Play wins")
-			}
-			break
+			fmt.Println("computer chose PAPER")
+			// break
 		case SCISSORS:
-			if playerValue==ROCK{
-				fmt.Println("Computer wins")
-			} else {
-				fmt.Println("Play wins")
-			}
-			break
+			fmt.Println("Computer chose SCISSORS")
 		default:
-			fmt.Println("Invalid choice")
+		}
+
+		// fmt.Println()
+
+		if computerValue == playerValue {
+			fmt.Println("It is a draw")
+		} else {
+			switch playerValue{
+			case ROCK:
+				if playerValue==PAPER{
+					fmt.Println("Computer wins")
+				} else {
+					fmt.Println("Play wins")
+				}
+				break
+			case PAPER:
+				if playerValue==SCISSORS{
+					fmt.Println("Computer wins")
+				} else {
+					fmt.Println("Play wins")
+				}
+				break
+			case SCISSORS:
+				if playerValue==ROCK{
+					fmt.Println("Computer wins")
+				} else {
+					fmt.Println("Play wins")
+				}
+				break
+			default:
+				fmt.Println("Invalid choice")
+			}
 		}
 	}
 }
