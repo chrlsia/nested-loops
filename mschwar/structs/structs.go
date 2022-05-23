@@ -8,23 +8,39 @@ import (
 	"time"
 )
 
-var reader=bufio.NewReadWriter(os.Stdin)
+var reader = bufio.NewReader(os.Stdin)
 
-func main(){
-	firstName:= getUserData("Please enter your first name:")
-	lastName:= getUserData("Please enter your last name:")
-	birthdate:= getUserData("Please enter your birthdate (MM/DD/YY):")
-	created := time.Now()
-
-	// ... do something awesome with these data
-	fmt.Println(firstName, lastName,birthdate,created)
+type User struct {
+	firstName   string
+	lastName    string
+	birthDate   string
+	createdDate time.Time
 }
 
-func getUserData(promptText string) string{
+func main() {
+	var newUser User
+
+	firstName := getUserData("Please enter your first name:")
+	lastName := getUserData("Please enter your last name:")
+	birthdate := getUserData("Please enter your birthdate (MM/DD/YYYY):")
+	created := time.Now()
+
+	newUser = User{
+		firstName:   firstName,
+		lastName:    lastName,
+		birthDate:   birthdate,
+		createdDate: created,
+	}
+
+	// ... do something awesome with these data
+	fmt.Println(newUser)
+}
+
+func getUserData(promptText string) string {
 	fmt.Print(promptText)
 
-	userInput, _:= reader.ReadString('\n')
-	cleanedInput:= strings.Replace(userInput,"\n","",-1)
+	userInput, _ := reader.ReadString('\n')
+	cleanedInput := strings.Replace(userInput, "\n", "", -1)
 
 	return cleanedInput
 }
